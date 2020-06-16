@@ -40,3 +40,18 @@
 .active {
   background: blue;
 }
+
+.sidebar {
+  display: block;
+  width: 20%;
+  min-height: 100vh;
+  float: left;
+  background: pink;
+}
+.main {
+  width: 80%;
+  float: left;
+  background: salmon;
+  display: block;
+
+}

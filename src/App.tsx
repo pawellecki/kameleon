@@ -21,7 +21,39 @@ const App: React.FC<{}> = () => {
 
   return (
     <Router>
-      <div className="App">
+      <aside className="sidebar">
+        <div>
+          <h1>to jest sidebar</h1>
+          <ul>
+            <li>
+              <Link to={
+                {
+                  pathname: "/koty",
+                  state: {
+                    voice: "miauu"
+                  }
+                }
+              }>
+                wszystkie koty
+              </Link>
+            </li>
+            <li>
+              <Link to={
+                {
+                  pathname: `/koty/${chosenTab}`,
+                  state: {
+                    voice: "jeden kot miauu",
+                    hero: {chosenTab}
+                  }
+                }
+              }>
+                jeden kot po id
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </aside>
+      <main className="main">
         CHosen ONE!!!: {chosenTab}
         <Tabs
           config={config}
@@ -30,33 +62,13 @@ const App: React.FC<{}> = () => {
         {chosenTab === 1 && <Input name='piesel' />}
         {chosenTab === 2 && <Input name='kura' />}
         {chosenTab === 3 && <Input name='doniczka' />}
-      </div>
-      <Link to={
-        {
-          pathname: "/koty",
-          state: {
-            voice: "miauu"
-          }
-        }
-      }>
-        wszystkie koty
-      </Link>
-
-      <Link to={
-        {
-          pathname: "/koty/:id",
-          state: {
-            voice: "miauu"
-          }
-        }
-      }>
-        kot po id
-      </Link>
-      <Switch>
-        <Route path="/koty/:id" component={Kot}/>
-        <Route path="/koty" component={KotList}/>
-        <Route path="/"/>
-      </Switch>
+        
+        <Switch>
+          <Route path="/koty/:id" component={Kot}/>
+          <Route path="/koty" component={KotList}/>
+          <Route path="/"/>
+        </Switch>
+      </main>
     </Router>
   )
 }
